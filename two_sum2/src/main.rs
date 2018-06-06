@@ -21,10 +21,25 @@ fn two_sum(inputs: &[i32], target: i32) -> (usize, usize) {
 }
 
 #[test]
+#[should_panic]
+fn empty() {
+  assert_eq!(two_sum(&[], 9), (0,1));
+}
+#[test]
 fn a() {
   assert_eq!(two_sum(&[2,7,11,15], 9), (0,1));
 }
 #[test]
+#[should_panic]
+fn nearlyblank() {
+  assert_eq!(two_sum(&[0], 0), (0,1));
+}
+#[test]
 fn b() {
   assert_eq!(two_sum(&[2,7,11,15], 18), (1, 2));
+}
+#[test]
+#[should_panic]
+fn c() {
+  assert_eq!(two_sum(&[2,7,11,15], 399), (1, 2));
 }
